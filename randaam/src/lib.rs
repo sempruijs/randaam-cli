@@ -1,5 +1,39 @@
 use rand::seq::SliceRandom; // 0.7.2
 
+pub struct Randaam {
+    pub person: String,
+    pub age: u8,
+    pub location: String,
+    pub salary: u32,
+    pub rarity: Rarity,
+}
+
+impl Randaam {
+    pub fn build(
+        person: String,
+        age: u8,
+        location: String,
+        salary: u32,
+        rarity: Rarity,
+    ) -> Randaam {
+        Randaam {
+            person,
+            age,
+            location,
+            salary,
+            rarity,
+        }
+    }
+}
+
+pub enum Rarity {
+    Normal,
+    Rare,
+    Epic,
+    Legendary,
+    SuperLegendary,
+}
+
 pub fn name() -> String {
     let names = vec![
         "Harry",
@@ -81,11 +115,13 @@ pub fn name() -> String {
         "Nathan",
         "Tobias",
         "Alex",
+        "Eline",
         "Daniële",
         "Elias",
         "Carlijn",
         "Caroline",
         "Lisanne",
+        "Evie",
         "Marije",
         "Tirza",
         "Naomi",
@@ -93,10 +129,12 @@ pub fn name() -> String {
         "Indy",
         "Marith",
         "Micha",
+        "Anne",
         "Hayanne",
         "Isa",
         "Nadine",
         "Aron",
+        "Janneke",
     ];
 
     names.choose(&mut rand::thread_rng()).unwrap().to_string()

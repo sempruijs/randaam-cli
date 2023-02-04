@@ -99,10 +99,12 @@ pub fn name() -> String {
         "Aron",
     ];
 
-    // let vs = vec![0, 1, 2, 3, 4];
-    // println!("{:?}", names.choose(&mut rand::thread_rng()));
-    let result = names.choose(&mut rand::thread_rng()).unwrap().to_string();
-    result
+    names.choose(&mut rand::thread_rng()).unwrap().to_string()
+}
+
+pub fn object() -> String {
+    let objects = vec!["stoep", "dinosaurus", "klokken", "lampen", "mieren", "appelmoes", "poep", "bank", "goudvis", "ramen", "pizza", "banannen", "blopvis", "pennen", "bomen", "schoenen", "fietspompen", "fietsen", "deur", "bezem", "eekhoorn", "muis", "tafel", "cavia", "koek", "luiaart", "paarden", "melkpak", "chocola", "bananentros", "cavia", "brulaap", "duiven", "ezel", "geiten", "neushoorn", "zwijnen", "struisvogel", "varken", "parkiet", "stokbrood", "boeken"];
+    objects.choose(&mut rand::thread_rng()).unwrap().to_string()
 }
 
 #[cfg(test)]
@@ -112,5 +114,10 @@ mod tests {
     #[test]
     pub fn test_name() {
         assert!(name().len() > 0);
+    }
+
+    #[test]
+    pub fn test_object() {
+        assert!(object().len() > 0);
     }
 }

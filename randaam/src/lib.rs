@@ -1,5 +1,108 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+use rand::seq::SliceRandom; // 0.7.2
+
+pub fn name() -> String {
+    let names = vec![
+        "Harry",
+        "Bert",
+        "Henk",
+        "Sebastiaan",
+        "Papa",
+        "Rutger",
+        "Mama",
+        "Lars",
+        "Steven",
+        "Jannes",
+        "Iwan",
+        "Milan",
+        "Bertwim",
+        "Amgela",
+        "Jorgiam",
+        "Hansje",
+        "Pim",
+        "Sandra",
+        "Hennie",
+        "Achmet",
+        "Dirkjan",
+        "Barbaba",
+        "Jeroen",
+        "Riejan",
+        "Willem",
+        "Leo",
+        "Meneer",
+        "Bas",
+        "Dennis",
+        "Jan",
+        "Kees",
+        "Lies",
+        "Sem",
+        "Jan",
+        "Cor",
+        "Lucas",
+        "Finn",
+        "Daan",
+        "Levi",
+        "Milan",
+        "Bram",
+        "Luuk",
+        "Emma",
+        "Tess",
+        "Sophie",
+        "Julia",
+        "Anna",
+        "Mila",
+        "Sara",
+        "Luuk",
+        "Jesse",
+        "Mees",
+        "Thomas",
+        "Sam",
+        "Thijs",
+        "Adam",
+        "Max",
+        "Jullian",
+        "Hugo",
+        "Gijs",
+        "Benjamin",
+        "Tim",
+        "Ruben",
+        "Teun",
+        "Olivier",
+        "Sven",
+        "David",
+        "Stijn",
+        "Tom",
+        "Isa",
+        "Noa",
+        "Jasmijn",
+        "Esmee",
+        "Sanne",
+        "Joël",
+        "Emmanuel",
+        "Nathan",
+        "Tobias",
+        "Alex",
+        "Daniële",
+        "Elias",
+        "Carlijn",
+        "Caroline",
+        "Lisanne",
+        "Marije",
+        "Tirza",
+        "Naomi",
+        "Joyce",
+        "Indy",
+        "Marith",
+        "Micha",
+        "Hayanne",
+        "Isa",
+        "Nadine",
+        "Aron",
+    ];
+
+    // let vs = vec![0, 1, 2, 3, 4];
+    // println!("{:?}", names.choose(&mut rand::thread_rng()));
+    let result = names.choose(&mut rand::thread_rng()).unwrap().to_string();
+    result
 }
 
 #[cfg(test)]
@@ -7,8 +110,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+    pub fn test_name() {
+        assert!(name().len() > 0);
     }
 }

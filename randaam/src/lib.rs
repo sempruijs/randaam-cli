@@ -107,6 +107,12 @@ pub fn object() -> String {
     objects.choose(&mut rand::thread_rng()).unwrap().to_string()
 }
 
+pub fn action() -> String {
+    let actions = vec!["inspecteur", "zitter", "liefhebber", "visser", "schepper", "specialist", "schoonmaker", "verkoper", "wasser", "bakker", "temmer", "progammeur", "vlogger"];
+    actions.choose(&mut rand::thread_rng()).unwrap().to_string()
+}
+
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -119,5 +125,10 @@ mod tests {
     #[test]
     pub fn test_object() {
         assert!(object().len() > 0);
+    }
+
+    #[test]
+    pub fn test_action() {
+        assert!(action().len() > 0);
     }
 }

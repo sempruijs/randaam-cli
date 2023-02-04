@@ -1,1 +1,1 @@
-/Users/sem/dev/randaam-rust/target/debug/librandaam.rlib: /Users/sem/dev/randaam-rust/randaam/src/lib.rs
+/Users/sem/dev/randaam-cli/target/debug/librandaam.rlib: /Users/sem/dev/randaam-cli/randaam/src/lib.rs

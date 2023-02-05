@@ -278,6 +278,10 @@ pub fn salary() -> u32 {
     rand::thread_rng().gen_range(1..2001)
 }
 
+pub fn gen_randaam() -> Randaam {
+    Randaam::build(person(), age(), location(), salary(), rarity(), emoji())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

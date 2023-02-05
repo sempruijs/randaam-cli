@@ -28,6 +28,15 @@ impl Randaam {
             emoji,
         }
     }
+
+    pub fn print(r: Self) {
+        println!("{} \n\n", Rarity::format(r.rarity));
+        println!("{}", r.emoji);
+        println!("{}", r.person);
+        println!(" {} jaar oud", r.age);
+        println!("€{} per week", r.salary);
+        println!("woont in een {}", r.location);
+    }
 }
 
 #[derive(PartialEq, Debug)]
@@ -37,6 +46,18 @@ pub enum Rarity {
     Epic,
     Legendary,
     SuperLegendary,
+}
+
+impl Rarity {
+    pub fn format(r: Self) -> String {
+        match r {
+            Rarity::SuperLegendary => String::from("SUPER LEGENDARISCH!!!"),
+            Rarity::Legendary => String::from("Legendarisch!!"),
+            Rarity::Epic => String::from("Episch!"),
+            Rarity::Rare => String::from("Zeldzaam"),
+            Rarity::Normal => String::from("normaal"),
+        }
+    }
 }
 
 pub fn name() -> String {

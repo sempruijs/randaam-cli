@@ -30,6 +30,7 @@ impl Randaam {
     }
 }
 
+#[derive(PartialEq, Debug)]
 pub enum Rarity {
     Normal,
     Rare,
@@ -225,6 +226,29 @@ pub fn age() -> u8 {
     rand::thread_rng().gen_range(1..101)
 }
 
+pub fn rarity() -> Rarity {
+    let rarity_num = rand::thread_rng().gen_range(1..10001);
+    decide_rarity(rarity_num)
+}
+
+pub fn decide_rarity(x: u32) -> Rarity {
+    if x > 10000 {
+        panic!("x should be lower or equal to 10000");
+    } else if x == 10000 {
+        Rarity::SuperLegendary
+    } else if x > 9990 {
+        Rarity::Legendary
+    } else if x > 9900 {
+        Rarity::Epic
+    } else if x > 9000 {
+        Rarity::Rare
+    } else if x > 0 {
+        Rarity::Normal
+    } else {
+        panic!("x should be higher or equal to 1");
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -253,5 +277,26 @@ mod tests {
     pub fn test_age() {
         let age = age();
         assert!(age > 0 && 101 > age);
+    }
+
+    #[test]
+    #[should_panic]
+    pub fn too_high_for_rarity() {
+        decide_rarity(10001);
+    }
+
+    #[test]
+    #[should_panic]
+    pub fn too_low_for_rarity() {
+        decide_rarity(0);
+    }
+
+    #[test]
+    pub fn decide_rarity_works() {
+        assert_eq!(decide_rarity(9901), Rarity::Epic);
+        assert_eq!(decide_rarity(10000), Rarity::SuperLegendary);
+        assert_eq!(decide_rarity(9991), Rarity::Legendary);
+        assert_eq!(decide_rarity(9001), Rarity::Rare);
+        assert_eq!(decide_rarity(1), Rarity::Normal);
     }
 }

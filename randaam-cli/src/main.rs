@@ -7,7 +7,9 @@ fn main() {
         "woont in een boom".to_string(),
         300,
         Rarity::Normal,
+        randaam::emoji(),
     );
 
     println!("{}", randaam.person);
+    println!("{}", randaam.emoji);
 }

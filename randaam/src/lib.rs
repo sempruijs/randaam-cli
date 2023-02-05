@@ -6,6 +6,7 @@ pub struct Randaam {
     pub location: String,
     pub salary: u32,
     pub rarity: Rarity,
+    pub emoji: char,
 }
 
 impl Randaam {
@@ -15,6 +16,7 @@ impl Randaam {
         location: String,
         salary: u32,
         rarity: Rarity,
+        emoji: char,
     ) -> Randaam {
         Randaam {
             person,
@@ -22,6 +24,7 @@ impl Randaam {
             location,
             salary,
             rarity,
+            emoji,
         }
     }
 }
@@ -209,6 +212,12 @@ pub fn action() -> String {
 
 pub fn person() -> String {
     format!("{} de {} {}", name(), object(), action())
+}
+
+pub fn emoji() -> char {
+    //TODO: add more emojis
+    let emojis = vec!['😀', '😃', '😄', '😁', '😆', '😅'];
+    emojis.choose(&mut rand::thread_rng()).unwrap().clone()
 }
 
 #[cfg(test)]

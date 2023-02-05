@@ -249,6 +249,11 @@ pub fn decide_rarity(x: u32) -> Rarity {
     }
 }
 
+// salary per week
+pub fn salary() -> u32 {
+    rand::thread_rng().gen_range(1..2001)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -298,5 +303,11 @@ mod tests {
         assert_eq!(decide_rarity(9991), Rarity::Legendary);
         assert_eq!(decide_rarity(9001), Rarity::Rare);
         assert_eq!(decide_rarity(1), Rarity::Normal);
+    }
+
+    #[test]
+    pub fn test_salary() {
+        let sample = salary();
+        assert!(sample > 0 && 2001 > sample);
     }
 }

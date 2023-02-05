@@ -68,69 +68,16 @@ pub fn name() -> String {
 }
 
 pub fn object() -> String {
-    let objects = vec![
-        "stoep",
-        "dinosaurus",
-        "klokken",
-        "lampen",
-        "mieren",
-        "appelmoes",
-        "poep",
-        "bank",
-        "goudvis",
-        "ramen",
-        "pizza",
-        "banannen",
-        "blopvis",
-        "pennen",
-        "bomen",
-        "schoenen",
-        "fietspompen",
-        "fietsen",
-        "deur",
-        "bezem",
-        "eekhoorn",
-        "muis",
-        "tafel",
-        "cavia",
-        "koek",
-        "luiaart",
-        "paarden",
-        "melkpak",
-        "chocola",
-        "bananentros",
-        "cavia",
-        "brulaap",
-        "duiven",
-        "ezel",
-        "geiten",
-        "neushoorn",
-        "zwijnen",
-        "struisvogel",
-        "varken",
-        "parkiet",
-        "stokbrood",
-        "boeken",
-    ];
+    let objects = include_str!("./content/objects.txt")
+        .lines()
+        .collect::<Vec<_>>();
     objects.choose(&mut rand::thread_rng()).unwrap().to_string()
 }
 
 pub fn action() -> String {
-    let actions = vec![
-        "inspecteur",
-        "zitter",
-        "liefhebber",
-        "visser",
-        "schepper",
-        "specialist",
-        "schoonmaker",
-        "verkoper",
-        "wasser",
-        "bakker",
-        "temmer",
-        "progammeur",
-        "vlogger",
-    ];
+    let actions = include_str!("./content/actions.txt")
+        .lines()
+        .collect::<Vec<_>>();
     actions.choose(&mut rand::thread_rng()).unwrap().to_string()
 }
 

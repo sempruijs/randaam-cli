@@ -4,7 +4,7 @@ fn main() {
     let randaam = Randaam::build(
         randaam::person(),
         randaam::age(),
-        "woont in een boom".to_string(),
+        randaam::location(),
         randaam::salary(),
         randaam::rarity(),
         randaam::emoji(),
@@ -15,4 +15,5 @@ fn main() {
     println!("{}", randaam.emoji);
     println!("{:?}", randaam.rarity);
     println!("{}", randaam.salary);
+    println!("woont in een {}", randaam.location);
 }

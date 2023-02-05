@@ -222,6 +222,30 @@ pub fn emoji() -> char {
     emojis.choose(&mut rand::thread_rng()).unwrap().clone()
 }
 
+pub fn location() -> String {
+    let locations = [
+        "huis",
+        "grot",
+        "hutje",
+        "auto",
+        "boomhut",
+        "helicopter",
+        "snoepautomaat",
+        "kast",
+        "flat",
+        "snackbar",
+        "school",
+        "doos",
+        "fabriek",
+        "boot",
+    ];
+
+    locations
+        .choose(&mut rand::thread_rng())
+        .unwrap()
+        .to_string()
+}
+
 pub fn age() -> u8 {
     rand::thread_rng().gen_range(1..101)
 }
@@ -271,6 +295,11 @@ mod tests {
     #[test]
     pub fn test_action() {
         assert!(action().len() > 0);
+    }
+
+    #[test]
+    pub fn test_location() {
+        assert!(location().len() > 0);
     }
 
     #[test]

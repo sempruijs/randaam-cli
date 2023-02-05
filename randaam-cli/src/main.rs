@@ -3,7 +3,7 @@ use randaam::{Randaam, Rarity};
 fn main() {
     let randaam = Randaam::build(
         randaam::person(),
-        17,
+        randaam::age(),
         "woont in een boom".to_string(),
         300,
         Rarity::Normal,
@@ -11,5 +11,6 @@ fn main() {
     );
 
     println!("{}", randaam.person);
+    println!("{}", randaam.age);
     println!("{}", randaam.emoji);
 }

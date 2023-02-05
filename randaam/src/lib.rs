@@ -1,4 +1,5 @@
 use rand::seq::SliceRandom; // 0.7.2
+use rand::Rng;
 
 pub struct Randaam {
     pub person: String,
@@ -220,6 +221,10 @@ pub fn emoji() -> char {
     emojis.choose(&mut rand::thread_rng()).unwrap().clone()
 }
 
+pub fn age() -> u8 {
+    rand::thread_rng().gen_range(1..101)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -242,5 +247,11 @@ mod tests {
     #[test]
     pub fn test_person() {
         assert!(person().contains(" de "));
+    }
+
+    #[test]
+    pub fn test_age() {
+        let age = age();
+        assert!(age > 0 && 101 > age);
     }
 }

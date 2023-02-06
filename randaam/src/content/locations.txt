@@ -1,0 +1,14 @@
+huis
+grot
+hutje
+auto
+boomhut
+helicopter
+snoepautomaat
+kast
+flat
+snackbar
+school
+doos
+fabriek
+boot

@@ -95,22 +95,9 @@ pub fn emoji() -> char {
 }
 
 pub fn location() -> String {
-    let locations = [
-        "huis",
-        "grot",
-        "hutje",
-        "auto",
-        "boomhut",
-        "helicopter",
-        "snoepautomaat",
-        "kast",
-        "flat",
-        "snackbar",
-        "school",
-        "doos",
-        "fabriek",
-        "boot",
-    ];
+    let locations = include_str!("./content/locations.txt")
+        .lines()
+        .collect::<Vec<_>>();
 
     locations
         .choose(&mut rand::thread_rng())

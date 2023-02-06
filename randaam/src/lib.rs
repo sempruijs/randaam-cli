@@ -1,6 +1,26 @@
+//! # randaam
+//!
+//! `randaam` profides utilities for  getting random imaginary people.
+//!
+//! All the content of randaam is currently only availble in Dutch.
+//!
+//! randaam can generate the following content:
+//! - names
+//! - actions
+//! - jobs
+//! - ages
+//! - emojis
+//! - salary
+//! - rarities
+//!
+//! you can combine all of these properties into a single "randaam"
+//! a randaam is an imaginary person.
+//!
+
 use rand::seq::SliceRandom; // 0.7.2
 use rand::Rng;
 
+/// a randaam is an imaginary person.
 pub struct Randaam {
     pub person: String,
     pub age: u8,
@@ -11,6 +31,7 @@ pub struct Randaam {
 }
 
 impl Randaam {
+    /// build your own randaam by hand
     pub fn build(
         person: String,
         age: u8,
@@ -29,6 +50,7 @@ impl Randaam {
         }
     }
 
+    /// prints your randaam with standard formatting
     pub fn print(r: Self) {
         println!("{} \n\n", Rarity::format(r.rarity));
         println!("{}", r.emoji);
@@ -39,6 +61,7 @@ impl Randaam {
     }
 }
 
+/// tells how rare a randaam is.
 #[derive(PartialEq, Debug)]
 pub enum Rarity {
     Normal,
@@ -49,6 +72,7 @@ pub enum Rarity {
 }
 
 impl Rarity {
+    /// the standard way of formatting rarities.
     pub fn format(r: Self) -> String {
         match r {
             Rarity::SuperLegendary => String::from("SUPER LEGENDARISCH!!!"),
@@ -60,6 +84,14 @@ impl Rarity {
     }
 }
 
+/// get a random name
+///
+/// # example
+/// ```
+/// let random_name = randaam::name();
+/// println!("{}", random_name);
+/// ```
+/// the output could be something like:"Sebartiaan", "Amgla", "Steven", "Clarla"
 pub fn name() -> String {
     let names = include_str!("./content/names.txt")
         .lines()
@@ -67,6 +99,14 @@ pub fn name() -> String {
     names.choose(&mut rand::thread_rng()).unwrap().to_string()
 }
 
+/// get a random object
+///
+/// # example
+/// ```
+/// let random_object = randaam::object();
+/// println!("{}", random_object );
+/// ```
+/// the output could be something like:"goudvis", "pizza", "bomen"
 pub fn object() -> String {
     let objects = include_str!("./content/objects.txt")
         .lines()
@@ -74,6 +114,14 @@ pub fn object() -> String {
     objects.choose(&mut rand::thread_rng()).unwrap().to_string()
 }
 
+/// get a random action
+///
+/// # example
+/// ```
+/// let random_action = randaam::action();
+/// println!("{}", random_action);
+/// ```
+/// the output could be something like:"zitter", "liefhebber", "visser
 pub fn action() -> String {
     let actions = include_str!("./content/actions.txt")
         .lines()
@@ -81,10 +129,26 @@ pub fn action() -> String {
     actions.choose(&mut rand::thread_rng()).unwrap().to_string()
 }
 
+/// get a random person
+///
+/// # example
+/// ```
+/// let random_person = randaam::person();
+/// println!("{}", random_person);
+/// ```
+/// the output could be something like:"Emmanuel de varken wasser", "Sem de brulaap verkoper"
 pub fn person() -> String {
     format!("{} de {} {}", name(), object(), action())
 }
 
+/// get an random emoji
+///
+/// # example
+/// ```
+/// let random_emoji = randaam::emoji();
+/// println!("{}", random_emoji);
+/// ```
+/// the output could be something like:"😀", "😃", "😁"
 pub fn emoji() -> char {
     let emojis = include_str!("./content/emojis.txt")
         .chars()
@@ -94,6 +158,15 @@ pub fn emoji() -> char {
     emojis.choose(&mut rand::thread_rng()).unwrap().clone()
 }
 
+/// get a random location
+/// not geographical, just a place where someone could be.
+///
+/// # example
+/// ```
+/// let random_location = randaam::location();
+/// println!("{}", random_location);
+/// ```
+/// the output could be something like:"boom", "huis", "snackbar"
 pub fn location() -> String {
     let locations = include_str!("./content/locations.txt")
         .lines()
@@ -105,15 +178,47 @@ pub fn location() -> String {
         .to_string()
 }
 
+/// get a random age between 1 and 100 years
+/// the age is in years
+///
+/// # example
+/// ```
+/// let random_age = randaam::age();
+/// println!("{}", random_age);
+/// ```
+/// the output could be something like:"42", "2", "89"
 pub fn age() -> u8 {
     rand::thread_rng().gen_range(1..101)
 }
 
+/// get a rarity 
+///
+/// # Example
+/// ```
+/// use randaam::Rarity;
+/// 
+/// let rarity = randaam::rarity();
+/// println!("{}", Rarity::format(rarity));
+/// ````
+/// could be something like: "normaal", "Episch!!"
+/// to view the chance list for each rarity, look at the documentation for decide_rarity()
 pub fn rarity() -> Rarity {
     let rarity_num = rand::thread_rng().gen_range(1..10001);
     decide_rarity(rarity_num)
 }
 
+
+/// decides how rare a rarity is.
+///
+/// the input should be a number between 1 and 10000, else if will panic.
+/// 
+/// rarity         | chance
+/// -------------- | --------------
+/// Normal         | 9:10
+/// Rare           | 1:10
+/// Epic           | 1:100
+/// Legendary      |1:1000
+/// SuperLegendary | 1:10000
 pub fn decide_rarity(x: u32) -> Rarity {
     if x > 10000 {
         panic!("x should be lower or equal to 10000");

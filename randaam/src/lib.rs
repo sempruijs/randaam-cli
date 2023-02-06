@@ -198,7 +198,7 @@ pub fn age() -> u8 {
 /// use randaam::Rarity;
 /// 
 /// let rarity = randaam::rarity();
-/// println!("{}", Rarity::format(rarity));
+/// println!("{}", randaam::Rarity::format(rarity));
 /// ````
 /// could be something like: "normaal", "Episch!!"
 /// to view the chance list for each rarity, look at the documentation for decide_rarity()
@@ -237,10 +237,38 @@ pub fn decide_rarity(x: u32) -> Rarity {
     }
 }
 
-// salary per week
+/// get random salary 
+///
+/// salary is in euro's per week
+/// 
+/// # Example
+/// ```
+/// let random_salary = randaam::salary();
+/// println!("{}", random_salary);
+/// ```
+/// Output could be a range between 1 and 2000
 pub fn salary() -> u32 {
     rand::thread_rng().gen_range(1..2001)
 }
+
+/// generate a random randaam
+///
+/// # Example 
+/// ```
+/// let r = randaam::gen_randaam();
+/// randaam::Randaam::print(r);
+/// ```
+/// the output could be something like this:
+/// 
+///  normaal 
+///
+///
+/// 😆
+/// Dennis de poep schepper
+/// 62 jaar oud
+/// €676 per week
+/// woont in een grot
+/// 
 
 pub fn gen_randaam() -> Randaam {
     Randaam::build(person(), age(), location(), salary(), rarity(), emoji())

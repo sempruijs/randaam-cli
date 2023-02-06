@@ -33,7 +33,7 @@ impl Randaam {
         println!("{} \n\n", Rarity::format(r.rarity));
         println!("{}", r.emoji);
         println!("{}", r.person);
-        println!(" {} jaar oud", r.age);
+        println!("{} jaar oud", r.age);
         println!("€{} per week", r.salary);
         println!("woont in een {}", r.location);
     }

@@ -86,8 +86,11 @@ pub fn person() -> String {
 }
 
 pub fn emoji() -> char {
+    let emojis = include_str!("./content/emojis.txt")
+        .chars()
+        .filter(|c| c != &'\n')
+        .collect::<Vec<_>>();
     //TODO: add more emojis
-    let emojis = vec!['😀', '😃', '😄', '😁', '😆', '😅'];
     emojis.choose(&mut rand::thread_rng()).unwrap().clone()
 }
 

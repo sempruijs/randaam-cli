@@ -1,6 +1,5 @@
 [workspace]
 
 members = [
-  "randaam",
-  "randaam-cli"
+  "randaam"
 ]

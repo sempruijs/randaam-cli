@@ -1,6 +1,6 @@
 [package]
 name = "randaam"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 description = "Generate random imaginary people in all your rust projects"
 license = "MIT"

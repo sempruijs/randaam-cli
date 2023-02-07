@@ -1,20 +1,21 @@
 //! # randaam
 //!
-//! `randaam` profides utilities for  getting random imaginary people.
+//! `randaam` generates random imaginary people.
 //!
+//! Randaam generates random imaginary people.
 //! All the content of randaam is currently only availble in Dutch.
 //!
-//! randaam can generate the following content:
+//! Randaam can generate the following properties:
 //! - names
 //! - actions
 //! - jobs
 //! - ages
-//! - emojis
-//! - salary
+//! - emoji
+//! - salaries
 //! - rarities
 //!
-//! you can combine all of these properties into a single "randaam"
-//! a randaam is an imaginary person.
+//! You can combine all of these properties into a single `randaam`.
+//! A "`randaam` is an imaginary person.
 //!
 
 use rand::seq::SliceRandom; // 0.7.2
@@ -191,12 +192,12 @@ pub fn age() -> u8 {
     rand::thread_rng().gen_range(1..101)
 }
 
-/// get a rarity 
+/// get a rarity
 ///
 /// # Example
 /// ```
 /// use randaam::Rarity;
-/// 
+///
 /// let rarity = randaam::rarity();
 /// println!("{}", randaam::Rarity::format(rarity));
 /// ````
@@ -207,11 +208,10 @@ pub fn rarity() -> Rarity {
     decide_rarity(rarity_num)
 }
 
-
 /// decides how rare a rarity is.
 ///
 /// the input should be a number between 1 and 10000, else if will panic.
-/// 
+///
 /// rarity         | chance
 /// -------------- | --------------
 /// Normal         | 9:10
@@ -237,10 +237,10 @@ pub fn decide_rarity(x: u32) -> Rarity {
     }
 }
 
-/// get random salary 
+/// get random salary
 ///
 /// salary is in euro's per week
-/// 
+///
 /// # Example
 /// ```
 /// let random_salary = randaam::salary();
@@ -253,14 +253,14 @@ pub fn salary() -> u32 {
 
 /// generate a random randaam
 ///
-/// # Example 
+/// # Example
 /// ```
 /// let r = randaam::gen_randaam();
 /// randaam::Randaam::print(r);
 /// ```
 /// the output could be something like this:
-/// 
-///  normaal 
+///
+///  normaal
 ///
 ///
 /// 😆
@@ -268,7 +268,7 @@ pub fn salary() -> u32 {
 /// 62 jaar oud
 /// €676 per week
 /// woont in een grot
-/// 
+///
 
 pub fn gen_randaam() -> Randaam {
     Randaam::build(person(), age(), location(), salary(), rarity(), emoji())

@@ -281,8 +281,10 @@ pub fn salary() -> u32 {
 ///
 /// # Example
 /// ```
-/// let r = randaam::gen_randaam();
-/// randaam::Randaam::print(r);
+/// use randaam::Randaam;
+///
+/// let r = Randaam::gen();
+/// println!("{}", r);
 /// ```
 /// the output could be something like this:
 ///
@@ -296,8 +298,10 @@ pub fn salary() -> u32 {
 /// woont in een grot
 ///
 
-pub fn gen_randaam() -> Randaam {
-    Randaam::build(person(), age(), location(), salary(), rarity(), emoji())
+impl Randaam {
+    pub fn gen() -> Self {
+        Randaam::build(person(), age(), location(), salary(), rarity(), emoji())
+    }
 }
 
 #[cfg(test)]

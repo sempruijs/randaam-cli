@@ -18,6 +18,8 @@
 //! A "`randaam` is an imaginary person.
 //!
 
+use std::fmt::Display;
+
 use rand::seq::SliceRandom; // 0.7.2
 use rand::Rng;
 
@@ -29,6 +31,17 @@ pub struct Randaam {
     pub salary: u32,
     pub rarity: Rarity,
     pub emoji: char,
+}
+
+// add rarity in dislpay
+impl Display for Randaam {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{}\n\n {}\n {}\n {} jaar oud \n €{} per week \n woont in een {}",
+            self.rarity, self.emoji, self.person, self.age, self.salary, self.location
+        )
+    }
 }
 
 impl Randaam {
@@ -70,6 +83,19 @@ pub enum Rarity {
     Epic,
     Legendary,
     SuperLegendary,
+}
+
+impl Display for Rarity {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let r = match self {
+            Rarity::SuperLegendary => String::from("SUPER LEGENDARISCH!!!"),
+            Rarity::Legendary => String::from("Legendarisch!!"),
+            Rarity::Epic => String::from("Episch!"),
+            Rarity::Rare => String::from("Zeldzaam"),
+            Rarity::Normal => String::from("normaal"),
+        };
+        write!(f, "{}", r)
+    }
 }
 
 impl Rarity {

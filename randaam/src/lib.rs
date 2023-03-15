@@ -63,16 +63,6 @@ impl Randaam {
             emoji,
         }
     }
-
-    /// prints your randaam with standard formatting
-    pub fn print(r: Self) {
-        println!("{} \n\n", Rarity::format(r.rarity));
-        println!("{}", r.emoji);
-        println!("{}", r.person);
-        println!("{} jaar oud", r.age);
-        println!("€{} per week", r.salary);
-        println!("woont in een {}", r.location);
-    }
 }
 
 /// tells how rare a randaam is.
@@ -95,19 +85,6 @@ impl Display for Rarity {
             Rarity::Normal => String::from("normaal"),
         };
         write!(f, "{}", r)
-    }
-}
-
-impl Rarity {
-    /// the standard way of formatting rarities.
-    pub fn format(r: Self) -> String {
-        match r {
-            Rarity::SuperLegendary => String::from("SUPER LEGENDARISCH!!!"),
-            Rarity::Legendary => String::from("Legendarisch!!"),
-            Rarity::Epic => String::from("Episch!"),
-            Rarity::Rare => String::from("Zeldzaam"),
-            Rarity::Normal => String::from("normaal"),
-        }
     }
 }
 
@@ -225,7 +202,7 @@ pub fn age() -> u8 {
 /// use randaam::Rarity;
 ///
 /// let rarity = randaam::rarity();
-/// println!("{}", randaam::Rarity::format(rarity));
+/// println!("{}", rarity);
 /// ````
 /// could be something like: "normaal", "Episch!!"
 /// to view the chance list for each rarity, look at the documentation for decide_rarity()
